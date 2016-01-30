@@ -1,0 +1,25 @@
+// example app , using timer.c/timer.h utility
+
+void timer_handler(void)
+{
+	// the function
+
+}
+
+
+
+
+// start it : 
+if(start_timer(220, &timer_handler))	// was 220 = 220ms
+	{
+	printf("\n timer error\n");
+	} 
+	else 
+		{ 
+		printf("Timer started\n");
+		}
+			
+// then stop it :
+
+			stop_timer();
+		
