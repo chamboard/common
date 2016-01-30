@@ -1,0 +1,29 @@
+#!/bin/sh
+
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+include_dir=${exec_prefix}/include
+chantilly_lib_bp=chantilly_bp
+chantilly_lib_b2=chantilly_b2
+#
+# parsing input arguments
+#
+case "$1" in
+  -*=*) optarg=`echo "$1" | sed 's/[-_a-zA-Z0-9]*=//'` ;;
+  *) optarg= ;;
+esac
+#
+case $1 in
+    --bp)
+      echo -L${libdir} -I${include_dir} -l${chantilly_lib_bp} -lm
+      ;;
+    --b2)
+      echo -L${libdir} -I${include_dir} -l${chantilly_lib_b2} -lm
+      ;;
+    *)
+      echo "Must specify --bp for model B plus , or --b2 for model B2" 1>&2
+      exit 1
+      ;;
+esac
+#echo -L${libdir} -I${include_dir} -l${chantilly_lib} -lm
